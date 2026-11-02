@@ -1,9 +1,12 @@
 import html
+import json
 import re
 from pathlib import Path
 
 import tiktoken
 
+RAW_DIR = Path("data/raw/fastapi_tutorial")
+OUT_PATH = Path("data/processed/chunks.jsonl")
 HTML_TAGS = r"</?(font|span|div|u|b|i|br|strong|em)\b[^>]*>"
 MAX_TOKENS = 400
 OVERLAP = 50
@@ -58,14 +61,14 @@ def split_long_section(title, body, max_tokens=MAX_TOKENS, overlap=OVERLAP):
     """If a section is too big, cut it into overlapping pieces. Otherwise leave it alone."""
     tokens = enc.encode(body)
     if len(tokens) <= max_tokens:
-        return [(title, body)]                     # small enough, nothing to do
+        return [(title, body)]
 
     pieces = []
-    step = max_tokens - overlap                    # 400 - 50 = 350
-    for start in range(0, len(tokens), step):      # 0, 350, 700, ...
-        window = tokens[start:start + max_tokens]  # grab 400 tokens from this start
-        pieces.append((title, enc.decode(window))) # turn tokens back into text
-        if start + max_tokens >= len(tokens):      # reached the end, stop
+    step = max_tokens - overlap
+    for start in range(0, len(tokens), step):
+        window = tokens[start:start + max_tokens]
+        pieces.append((title, enc.decode(window)))
+        if start + max_tokens >= len(tokens):
             break
     return pieces
 
@@ -93,18 +96,44 @@ def merge_sections(sections, max_tokens=MAX_TOKENS):
     return cards
 
 
-if __name__ == "__main__":
-    sample = Path("data/raw/fastapi_tutorial/first-steps.md").read_text(encoding="utf-8")
-    sections = split_by_headings(clean_text(sample))
+def process_file(path):
+    """Run the full pipeline on one file: clean -> split -> cut big -> glue small."""
+    text = clean_text(path.read_text(encoding="utf-8"))
+    sections = split_by_headings(text)
 
-    # NEW: cut any oversized section into overlapping pieces before gluing
     pieces = []
     for title, body in sections:
         pieces.extend(split_long_section(title, body))
 
-    cards = merge_sections(pieces)
+    return merge_sections(pieces)
 
-    print(f"{len(sections)} sections -> {len(pieces)} pieces -> {len(cards)} cards:\n")
-    for i, card in enumerate(cards):
-        print(f"Card {i}: {count_tokens(card['text'])} tokens")
-        print(f"   sections: {card['sections']}\n")
+
+def main():
+    files = sorted(RAW_DIR.rglob("*.md"))      # every .md file, including subfolders
+    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    sizes = []
+
+    with OUT_PATH.open("w", encoding="utf-8") as out:
+        for path in files:
+            source = path.relative_to(RAW_DIR).as_posix()   # e.g. "security/first-steps.md"
+
+            for i, card in enumerate(process_file(path)):
+                record = {
+                    "chunk_id": f"{source}::{i}",
+                    "source": source,
+                    "sections": card["sections"],
+                    "text": card["text"],
+                }
+                out.write(json.dumps(record) + "\n")        # one card per line
+                sizes.append(count_tokens(card["text"]))
+
+    print(f"Files processed: {len(files)}")
+    print(f"Total cards: {len(sizes)}")
+    print(f"Tokens per card: smallest {min(sizes)}, biggest {max(sizes)}, "
+          f"average {sum(sizes) / len(sizes):.0f}")
+    print(f"Cards under 100 tokens: {sum(1 for s in sizes if s < 100)}")
+    print(f"Saved to {OUT_PATH}")
+
+
+if __name__ == "__main__":
+    main()
