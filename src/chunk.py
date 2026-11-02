@@ -7,7 +7,7 @@ import tiktoken
 
 RAW_DIR = Path("data/raw/fastapi_tutorial")
 OUT_PATH = Path("data/processed/chunks.jsonl")
-HTML_TAGS = r"</?(font|span|div|u|b|i|br|strong|em)\b[^>]*>"
+HTML_TAGS = r"</?(font|span|div|u|b|i|br|strong|em|dfn|abbr)\b[^>]*>"
 MAX_TOKENS = 400
 OVERLAP = 50
 
