@@ -1,0 +1,50 @@
+{"question": "Which property takes priority when both a legacy singular sample value and the updated plural sample values are defined in a schema?", "chunk_id": "schema-extra-example.md::4"}
+{"question": "How do I modify an existing record in FastAPI so that omitted request fields don't replace stored data with default values?", "chunk_id": "body-updates.md::2"}
+{"question": "how do I give a whole group of routes the same prefix and tags?", "chunk_id": "bigger-applications.md::4"}
+{"question": "Why should I add a return type hint when setting up a streaming response in FastAPI?", "chunk_id": "server-sent-events.md::0"}
+{"question": "how do I let an endpoint return one of two different models?", "chunk_id": "extra-models.md::3"}
+{"question": "can a dependency depend on another dependency?", "chunk_id": "dependencies/sub-dependencies.md::0"}
+{"question": "what does a basic dependency function look like?", "chunk_id": "dependencies/index.md::1"}
+{"question": "How can I configure my API to reject unexpected cookies sent by a client?", "chunk_id": "cookie-param-models.md::1"}
+{"question": "What error response will I receive if I request the current user's profile while not logged in?", "chunk_id": "security/simple-oauth2.md::5"}
+{"question": "What happens to existing stored values if a field is left out of a PUT update request?", "chunk_id": "body-updates.md::0"}
+{"question": "what security tools does FastAPI give me out of the box?", "chunk_id": "security/index.md::0"}
+{"question": "Do I need to make my test functions asynchronous when sending requests to a FastAPI application?", "chunk_id": "testing.md::0"}
+{"question": "How do I define a route parameter in FastAPI to accept several files from the same form field?", "chunk_id": "request-files.md::4"}
+{"question": "How do I define a model attribute that only accepts a list of unique string items without duplicates?", "chunk_id": "body-nested-models.md::0"}
+{"question": "How does FastAPI handle things if my route function returns a standard Response object directly instead of a Pydantic model?", "chunk_id": "response-model.md::5"}
+{"question": "How do I mark an API route as obsolete in the documentation without actually removing the code?", "chunk_id": "path-operation-configuration.md::1"}
+{"question": "How do I write an import statement to access a module located in the parent directory of my current file?", "chunk_id": "bigger-applications.md::6"}
+{"question": "if I add dependencies on a router and on a single route, which runs first?", "chunk_id": "bigger-applications.md::5"}
+{"question": "What built-in benefits do you get in FastAPI when using a model as a field type inside another model?", "chunk_id": "body-nested-models.md::1"}
+{"question": "How can I apply a dependency to every endpoint in my app without adding it to each route individually?", "chunk_id": "dependencies/global-dependencies.md::0"}
+{"question": "Can I use a synchronous dependency function inside an asynchronous route handler in FastAPI?", "chunk_id": "dependencies/index.md::3"}
+{"question": "How can I define a FastAPI endpoint parameter with a hyphen in its name if hyphens are invalid in Python variable names?", "chunk_id": "query-params-str-validations.md::9"}
+{"question": "Will FastAPI include fields in the response if their explicit values happen to match their default values?", "chunk_id": "response-model.md::8"}
+{"question": "Where should I place my test file so I can use relative imports to load my app object?", "chunk_id": "testing.md::1"}
+{"question": "Can I accept a JSON body alongside a file upload in a single FastAPI endpoint?", "chunk_id": "request-forms-and-files.md::0"}
+{"question": "what happens if my endpoint throws an error while a yield dependency is open?", "chunk_id": "dependencies/dependencies-with-yield.md::3"}
+{"question": "What format and field names does the OAuth2 password flow require the client to use when sending login credentials?", "chunk_id": "security/simple-oauth2.md::0"}
+{"question": "who is the automatic /docs page meant for?", "chunk_id": "security/first-steps.md::1"}
+{"question": "What terminal command can I use to create a secure key for signing JWTs?", "chunk_id": "security/oauth2-jwt.md::5"}
+{"question": "What are the advantages of creating a dedicated API response model that omits sensitive attributes and enforces required fields?", "chunk_id": "sql-databases.md::5"}
+{"question": "Where do I specify the HTTP status code and other settings for an endpoint, in the function itself or in the decorator?", "chunk_id": "path-operation-configuration.md::0"}
+{"question": "How does FastAPI handle sharing common logic and database connections across multiple path operations without repeating code?", "chunk_id": "dependencies/index.md::0"}
+{"question": "What kind of response does FastAPI return if a user passes a string instead of an integer for a path parameter?", "chunk_id": "path-params.md::1"}
+{"question": "how do I return a user but hide the password field?", "chunk_id": "response-model.md::4"}
+{"question": "How do I set up an endpoint response type in FastAPI if the exact property names aren't known until runtime?", "chunk_id": "extra-models.md::4"}
+{"question": "How do I pass parameters to a function when setting it up to run in the background?", "chunk_id": "background-tasks.md::1"}
+{"question": "How do I start my FastAPI app directly from Python so that it only runs when executed as a script and not when imported elsewhere?", "chunk_id": "debugging.md::0"}
+{"question": "Why do I need to set check_same_thread to false when configuring my SQLite database in FastAPI?", "chunk_id": "sql-databases.md::2"}
+{"question": "How do I catch and handle my own custom exceptions globally in my app?", "chunk_id": "handling-errors.md::2"}
+{"question": "Can people read the data inside a JSON Web Token if it isn't encrypted?", "chunk_id": "security/oauth2-jwt.md::1"}
+{"question": "Can I use a wildcard for allowed origins if I want to support cookies in cross-origin requests?", "chunk_id": "cors.md::3"}
+{"question": "How do I send custom SSE fields like retry or event names instead of just plain data?", "chunk_id": "server-sent-events.md::1"}
+{"question": "What kind of error response and status code does the API return when a requested item doesn't exist?", "chunk_id": "handling-errors.md::1"}
+{"question": "Why should I use the `response_model` parameter instead of just using a return type annotation on my path operation function?", "chunk_id": "sql-databases.md::8"}
+{"question": "do I need to set any headers myself for server-sent events?", "chunk_id": "server-sent-events.md::2"}
+{"question": "How do I set up a new project and install FastAPI with its default optional dependencies using uv?", "chunk_id": "index.md::2"}
+{"question": "How do I define a request body that expects a JSON array instead of a standard object?", "chunk_id": "body-nested-models.md::2"}
+{"question": "How can I reject unauthorized or unexpected headers sent by a client?", "chunk_id": "header-param-models.md::0"}
+{"question": "How do I replace the default JSON error response for invalid incoming data with a custom one?", "chunk_id": "handling-errors.md::3"}
+{"question": "How can I make sure an endpoint only processes requests from active users instead of just any authenticated user?", "chunk_id": "security/simple-oauth2.md::4"}
