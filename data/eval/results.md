@@ -5,4 +5,4 @@
 | Vector only | 70% | 0.489 | 8 |
 | BM25 only | 74% | 0.529 | 0 |
 | Hybrid (RRF) | 74% | 0.584 | 7 |
-| Hybrid + rerank | 76% | 0.580 | 175 |
+| Hybrid + rerank | 80% | 0.596 | 1034 |

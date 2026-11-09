@@ -4,7 +4,7 @@ from sentence_transformers import CrossEncoder
 
 from hybrid_search import HybridSearcher
 
-RERANK_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+RERANK_MODEL = "BAAI/bge-reranker-base"
 CANDIDATES = 20
 
 
