@@ -7,12 +7,12 @@ from google.genai import errors, types
 from rerank_search import RerankSearcher
 
 LLM_MODELS = [                  # tried in this order until one works
+    "gemini-3.5-flash",
     "gemini-3.8-flash",
     "gemini-3.7-flash",
-    "gemini-3.5-flash",
     "gemini-3.5-flash-lite",
 ]
-TIMEOUT_MS = 60_000             # give up on a model after 60 seconds
+TIMEOUT_MS = 20_000             # give up on a model after 60 seconds
 TOP_K = 5
 
 INSTRUCTIONS = """You answer questions about the FastAPI documentation.
