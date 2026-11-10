@@ -2,6 +2,8 @@
 
 A question-answering system over the FastAPI tutorial docs that combines keyword search (BM25) and semantic search (embeddings), merges them with Reciprocal Rank Fusion, reranks with a cross-encoder, and generates answers with citations using Gemini.
 
+![Demo](docs/demo.png)
+
 I built this to learn how retrieval actually works under the hood, so every piece (chunking, fusion, evaluation) is written from scratch instead of using a framework like LangChain.
 
 ## Results
